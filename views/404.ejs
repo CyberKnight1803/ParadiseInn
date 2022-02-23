@@ -1,0 +1,24 @@
+<%- include('./includes/head.ejs') %>
+    </head>
+
+    <%- include('./includes/navigation.ejs') %>
+        <div class="p-10 flex items-center justify-center">
+            <div class="p-20 w-full">
+              <header class="p-10 text-center font-roboto text-8xl text-white">
+                404
+              </header>
+              
+              <div class="p-8">
+                <p class="font-dm_mono text-center text-2xl text-white">OOPS! Page Not Found!</p>  
+              </div>
+            
+              <div class="p-20 relative flex justify-center">
+                <form action="/" method="get">
+                    <button type="submit" class="bg-red-500 hover:bg-red-700 shadow rounded-full py-4 px-8 text-white">
+                        Return to Home Page
+                    </button>
+                </form>
+              </div>
+          </div>
+    </body>
+</html>

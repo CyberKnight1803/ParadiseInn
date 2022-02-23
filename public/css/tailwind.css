@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Roboto+Mono&display=swap");
+
+@font-face {
+    font-family: "archia-bold";
+    src: url("../fonts/archia-bold-webfont.woff2") format("woff2");
+  }
+  
+  @font-face {
+    font-family: "archia";
+    src: url("../fonts/archia-medium-webfont.woff2") format("woff2");
+  }
+  
+  @font-face {
+    font-family: "archia-semibold";
+    src: url("../fonts/archia-semibold-webfont.woff2") format("woff2");
+  }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
