@@ -3,7 +3,3 @@ node_modules/
 
 # Private files
 utils/constants.js
-
-# Code formatter
-.prettierignore
-.prettierrc
