@@ -4,6 +4,7 @@ const hotelController = require('../controllers/hotel');
 const router = express.Router();
 
 router.get('/', hotelController.getHomePage);
+router.post('/', hotelController.postHomePage);
 
 router.get('/bookings', hotelController.getBookings);
 

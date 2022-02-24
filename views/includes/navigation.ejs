@@ -6,7 +6,7 @@
           <div>
             <ul class="flex">
               <li class="ml-4">
-                <a href="/">Logo</a>
+                <a href="/">ParadiseInn</a>
               </li>
             </ul>
           </div>
@@ -14,22 +14,22 @@
           <div>
             <ul class="flex">
               <li class="mr-2 ml-8">
-                <a href="/bookings" class="hover:underline hover:underline-offset-8 hover:decoration-4 hover:decoration-red-500">
+                <a href="/bookings" class="<%= path === '/bookings' ? 'underline underline-offset-8 decoration-4 decoration-red-500' : 'hover:underline hover:underline-offset-8 hover:decoration-4 hover:decoration-red-500' %>">
                     Bookings
                 </a>
               </li>
               <li class="mr-2 ml-8">
-                <a href="/book" class="hover:underline hover:underline-offset-8 hover:decoration-4 hover:decoration-red-500">
+                <a href="/book" class="<%= path === '/book' ? 'underline underline-offset-8 decoration-4 decoration-red-500' : 'hover:underline hover:underline-offset-8 hover:decoration-4 hover:decoration-red-500' %>">
                     Book a stay
                 </a>
               </li>
               <li class="mr-2 ml-8">
-                <a href="/login" class="hover:underline hover:underline-offset-8 hover:decoration-4 hover:decoration-red-500">
+                <a href="/login" class="<%= path === '/login' ? 'underline underline-offset-8 decoration-4 decoration-red-500' : 'hover:underline hover:underline-offset-8 hover:decoration-4 hover:decoration-red-500' %>">
                     Login
                 </a>
               </li>
               <li class="mr-4 ml-8">
-                <a href="/signup" class="hover:underline hover:underline-offset-8 hover:decoration-4 hover:decoration-red-500">
+                <a href="/signup" class="<%= path === '/signup' ? 'underline underline-offset-8 decoration-4 decoration-red-500' : 'hover:underline hover:underline-offset-8 hover:decoration-4 hover:decoration-red-500' %>">
                     SignUp
                 </a>
               </li>

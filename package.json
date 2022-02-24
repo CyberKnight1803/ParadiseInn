@@ -5,8 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js",
-    "start-server": "postcss public/css/tailwind.css -o public/css/main.css && node app.js", 
+    "start": "postcss public/css/tailwind.css -o public/css/main.css && nodemon app.js",
+    "start-server": "node app.js", 
     "build:css": "postcss public/css/tailwind.css -o public/css/main.css"
   },
   "author": "Omkar Pitale",
