@@ -1,5 +1,5 @@
 <body class="">
-<div class="flex flex-col h-screen justify-between">
+<div class="flex flex-col min-h-screen">
 <header>
     <nav class="p-4 py-6 font-archiasemibold text-black">
         <div class="flex justify-between">
@@ -12,6 +12,7 @@
           </div>
   
           <div>
+            <% if (path !== '/admin') { %>
             <ul class="flex">
               <li class="ml-8">
                 <a href="/bookings" class="px-4 py-2 <%= path === '/bookings' ? 'underline underline-offset-8 decoration-4 decoration-black' : 'hover:bg-black hover:text-white hover:rounded-lg' %>">
@@ -34,6 +35,25 @@
                 </a>
               </li>
             </ul>
+            <% } else { %> 
+              <ul class="flex">
+                <li class="ml-8">
+                  <a href="/admin/manage-bookings" class="px-4 py-2 <%= path === '/manage-bookings' ? 'underline underline-offset-8 decoration-4 decoration-black' : 'hover:bg-black hover:text-white hover:rounded-lg' %>">
+                      Manage Bookings
+                  </a>
+                </li>
+                <li class="ml-8">
+                  <a href="/admin/add-room" class="px-4 py-2 <%= path === '/add-room' ? 'underline underline-offset-8 decoration-4 decoration-black' : 'hover:bg-black hover:text-white hover:rounded-lg' %>">
+                      Add Room
+                  </a>
+                </li>
+                <li class="ml-8">
+                  <a href="/admin/add-employee" class="px-4 py-2 <%= path === '/add-employee' ? 'underline underline-offset-8 decoration-4 decoration-black' : 'hover:bg-black hover:text-white hover:rounded-lg' %>">
+                      Add Employee
+                  </a>
+                </li>
+              </ul>
+            <% } %>
           </div>
   
         </div>

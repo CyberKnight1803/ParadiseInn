@@ -1,23 +1,25 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const roomtypeSchema = Schema({
+const roomSchema = Schema({
     name: {
         type: String, 
         required: true, 
         unique: true
     }, 
-    cost: {
-        type: Number, 
-        required: true 
-    }, 
-    imgPath: {
+    roomType: {
         type: String, 
-        required: true
+        required:true, 
+    }, 
+    isOccupied: {
+        type: Boolean, 
+        required: false, 
+        default: false
     }
 });
 
+
 module.exports = mongoose.model(
-    'RoomType', 
-    roomtypeSchema
+    'Room', 
+    roomSchema
 );

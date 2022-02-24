@@ -496,8 +496,8 @@ Ensure the default browser behavior of the `hidden` attribute.
 .h-full{
     height: 100%;
 }
-.h-screen{
-    height: 100vh;
+.min-h-screen{
+    min-height: 100vh;
 }
 .w-full{
     width: 100%;
@@ -510,6 +510,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .w-60{
     width: 15rem;
+}
+.flex-grow{
+    flex-grow: 1;
 }
 .grid-cols-3{
     grid-template-columns: repeat(3, minmax(0, 1fr));
