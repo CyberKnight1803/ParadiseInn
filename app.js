@@ -1,6 +1,7 @@
 const path = require('path');
 const bodyParser = require('body-parser');
 const express = require('express');
+
 const mongoose = require('mongoose');
 
 const constants = require('./utils/constants');
@@ -30,4 +31,9 @@ app.use(hotelRoutes);
 app.use(authRoutes);
 app.use(errorController.get404);
 
-app.listen(constants.PORT);
+mongoose.connect(constants.MONGODB_URI)
+.then(result => {
+    console.log("Database Connected!");
+    app.listen(constants.PORT);
+})
+.catch(err => console.log(err));

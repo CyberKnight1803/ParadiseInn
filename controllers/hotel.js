@@ -1,6 +1,12 @@
+const RoomType = require('../models/roomtype.js');
+
 exports.getHomePage = (req, res, next) => {
-    res.render('hotel/home', {
-        path: "/"
+    RoomType.find()
+    .then(roomtypes => {
+        return res.render('hotel/home', {
+            path: "/", 
+            roomTypes: roomtypes
+        });
     });
 };
 
