@@ -18,8 +18,8 @@
         <p class="text-sm font-archia">We all live in an age that belongs to the young at heart. Life that is becoming extremely fast!</p>
     </div>
 
-    <div class="flex items-center justify-center">
-        <div class="p-16 grid grid-cols-3">
+    <div class="flex items-center justify-center mb-8">
+        <div class="p-8 grid grid-cols-3">
             <% for (let roomtype of roomTypes) { %>
             <div class="ml-10 mr-10 border rounded-lg shadow-3xl w-96" class="">
                 <img src="<%= roomtype.imgPath %>" alt="Room-Image" class="w-full rounded-t-lg object-cover">
@@ -30,30 +30,8 @@
             </div>
 
             <% } %>
-
-            <!-- <div class="ml-10 mr-10 border rounded-lg shadow-3xl w-96" class="">
-                <img src="/images/twin-room.webp" alt="" class="w-full rounded-t-lg object-cover">
-                <div class="p-2 w-full font-archia flex justify-between">
-                    <p class="pl-4 text-md w-full">Twin Bed Room</p>
-                    <p class="pr-2 font-dm_mono text-lg">$350/night</p>
-                </div>
-            </div>
-            <div class="ml-10 mr-10 border rounded-lg shadow-3xl w-96" class="">
-                <img src="/images/delux-room.webp" alt="" class="w-full rounded-t-lg object-cover">
-                <div class="p-2 w-full font-archia flex justify-between">
-                    <p class="pl-4 text-md w-full">Delux Room</p>
-                    <p class="pr-2 font-dm_mono text-lg">$350/night</p>
-                </div>
-            </div>
-            <div class="ml-10 mr-10 border rounded-lg shadow-3xl w-96" class="">
-                <img src="/images/family-room.webp" alt="" class="w-full rounded-t-lg object-cover">
-                <div class="p-2 w-full font-archia flex justify-between">
-                    <p class="pl-4 text-md w-full">Family Room</p>
-                    <p class="pr-2 font-dm_mono text-lg">$450/night</p>
-                </div>
-            </div> -->
         </div>
     </div>
 
-    </body>
-</html>
+    <%- include('../includes/footer.ejs') %>
+    <%- include('../includes/end.ejs') %>
