@@ -12,7 +12,7 @@
           </div>
   
           <div>
-            <% if (path !== '/admin') { %>
+            <% if (!user || user.userType != "admin") { %>
             <ul class="flex">
               <li class="ml-8">
                 <a href="/bookings" class="px-4 py-2 <%= path === '/bookings' ? 'underline underline-offset-8 decoration-4 decoration-black' : 'hover:bg-black hover:text-white hover:rounded-lg' %>">
@@ -24,6 +24,7 @@
                     Book a stay
                 </a>
               </li>
+              <% if (!isLoggedIn) {%>
               <li class="ml-8">
                 <a href="/login" class="px-4 py-2 <%= path === '/login' ? 'underline underline-offset-8 decoration-4 decoration-black' : 'hover:bg-black hover:text-white hover:rounded-lg' %>">
                     Login
@@ -34,9 +35,21 @@
                     SignUp
                 </a>
               </li>
+              <% } else { %>
+                <li class="mr-4 ml-8">
+                  <a href="/profile" class="px-4 py-2 <%= path === '/profile' ? 'underline underline-offset-8 decoration-4 decoration-black' : 'hover:bg-black hover:text-white hover:rounded-lg' %>">
+                      Profile
+                  </a>
+                </li>
+              <% } %>
             </ul>
             <% } else { %> 
               <ul class="flex">
+                <li class="ml-8">
+                  <a href="/admin/layouts" class="px-4 py-2 <%= path === '/layouts' ? 'underline underline-offset-8 decoration-4 decoration-black' : 'hover:bg-black hover:text-white hover:rounded-lg' %>">
+                      Layouts
+                  </a>
+                </li>
                 <li class="ml-8">
                   <a href="/admin/manage-bookings" class="px-4 py-2 <%= path === '/manage-bookings' ? 'underline underline-offset-8 decoration-4 decoration-black' : 'hover:bg-black hover:text-white hover:rounded-lg' %>">
                       Manage Bookings
@@ -52,6 +65,24 @@
                       Add Employee
                   </a>
                 </li>
+                <% if (!isLoggedIn) {%>
+                  <li class="ml-8">
+                    <a href="/login" class="px-4 py-2 <%= path === '/login' ? 'underline underline-offset-8 decoration-4 decoration-black' : 'hover:bg-black hover:text-white hover:rounded-lg' %>">
+                        Login
+                    </a>
+                  </li>
+                  <li class="mr-4 ml-8">
+                    <a href="/signup" class="px-4 py-2 <%= path === '/signup' ? 'underline underline-offset-8 decoration-4 decoration-black' : 'hover:bg-black hover:text-white hover:rounded-lg' %>">
+                        SignUp
+                    </a>
+                  </li>
+                  <% } else { %>
+                    <li class="mr-4 ml-8">
+                      <a href="/profile" class="px-4 py-2 <%= path === '/profile' ? 'underline underline-offset-8 decoration-4 decoration-black' : 'hover:bg-black hover:text-white hover:rounded-lg' %>">
+                          Profile
+                      </a>
+                    </li>
+                  <% } %>
               </ul>
             <% } %>
           </div>
