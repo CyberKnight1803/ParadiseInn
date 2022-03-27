@@ -3,9 +3,35 @@
 
     <%- include('../includes/navigation.ejs') %> 
     <main class="flex-grow">
+        <div class="flex items-center justify-center m-4">
+            <div class="grid grid-cols-2">
 
-        <h1 class="p-20 text-6xl text-black">List of bookings</h1>
-    
+                <% bookings.forEach(booking => { %>
+                    <div class="m-8 bg-white border border-slate-100 rounded-lg shadow-xl w-96">
+                        <div class="p-4 bg-black rounded-t-lg">
+                            <h1 class="text-sm text-white font-roboto">Stay #<%= booking._id %></h1>
+                        </div>
+                        <div class="px-4 py-2">
+                            <p class="text-md font-archia"><span class="font-bold">Check-In</span> : <%= booking.checkInDate %></p>
+                        </div>
+                        <div class="px-4 py-2">
+                            <p class="text-md font-archia"><span class="font-bold">Check-Out</span> : <%= booking.checkOutDate %></p>
+                        </div>
+                        <div class="px-4 py-2">
+                            <p class="text-md font-archia"><span class="font-bold">Rooms</span> : <%= booking.numRooms %></p>
+                        </div>
+                        <div class="px-4 py-2">
+                            <p class="text-md font-archia"><span class="font-bold">Room type</span> : <%= booking.roomType %></p>
+                        </div>
+
+                        <div class="px-4 py-2">
+                            <p class="text-md font-archia"><span class="font-bold">Total Guests</span> : <%= booking.numGuests %></p>
+                        </div>
+                    </div>
+              <% });%>
+
+            </div>
+           </div>
     </main>
         <%- include('../includes/footer.ejs') %>
     <%- include('../includes/end.ejs') %>
