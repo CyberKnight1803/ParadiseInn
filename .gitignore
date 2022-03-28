@@ -3,3 +3,4 @@ node_modules/
 
 # Private files
 utils/constants.js
+utils/sendEmail.js

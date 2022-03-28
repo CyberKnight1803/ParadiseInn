@@ -8,8 +8,12 @@
 
                 <% bookings.forEach(booking => { %>
                     <div class="m-8 bg-white border border-slate-100 rounded-lg shadow-xl w-96">
-                        <div class="p-4 bg-black rounded-t-lg">
+                        <div class="p-4 bg-black rounded-t-lg flex justify-between">
                             <h1 class="text-sm text-white font-roboto">Stay #<%= booking._id %></h1>
+                            <form action="/delete-booking" method="POST">
+                                <input type="hidden" name="bookingID" id="bookingID" value="<%= booking._id %>">
+                                <button type="submit"><i class="fa-solid fa-trash-can" style="color:white"></i></button>
+                            </form>
                         </div>
                         <div class="px-4 py-2">
                             <p class="text-md font-archia"><span class="font-bold">Check-In</span> : <%= booking.checkInDate %></p>

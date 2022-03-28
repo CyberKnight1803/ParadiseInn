@@ -3,7 +3,8 @@ const User = require('../models/user');
 const Booking = require('../models/booking');
 
 const bcrypt = require('bcryptjs');
-const { redirect } = require('express/lib/response');
+const mail = require('../utils/sendEmail').mail;
+const bookingEmailOptions = require('../utils/sendEmail').bookingEmailOptions;
 
 exports.getHomePage = (req, res, _next) => {
     RoomType.find()
@@ -83,12 +84,34 @@ exports.postAddBooking = (req, res, next) => {
         userId: req.user._id
     })
 
+    let bookingDetails;
+
     return booking.save()
-    .then(_result => {
+    .then(bookingInfo => {
+        bookingDetails = bookingInfo;
         return req.user.addBooking(booking);
     })
     .then(_result => {
         console.log("BOOKING SUCCESS!");
+        
+        res.render('emails/booking-email.ejs', {
+            booking: bookingDetails,
+            customerEmail: req.user.email,
+            customerName: req.user.name 
+        }, (err, emailBody) => {
+            if (err)
+                console.log(err);
+            else {
+                bookingEmailOptions.to = req.user.email;
+                bookingEmailOptions.subject = `Booking Confirmation - #${bookingDetails._id}`;
+                bookingEmailOptions.html = emailBody;
+                
+                mail.sendMail(bookingEmailOptions, (err, _info) => {
+                    if(err)
+                        console.log(err);
+                });
+            }
+        });
         return res.redirect('/bookings');
     })
     .catch(err => console.log(err));
@@ -139,4 +162,42 @@ exports.postProfile = (req, res, _next) => {
             })
             .catch(err => console.log(err));
     }
+};
+
+exports.postDeleteBooking = (req, res, next) => {
+    const bookingID = req.body.bookingID;
+    let bookingDetails;
+    Booking.findOne({_id: bookingID})
+        .then(booking => {
+            bookingDetails = booking;
+            return Booking.findByIdAndRemove({_id: bookingID});
+        })
+        .then(() => {
+            return req.user.deleteBooking(bookingID);
+        })
+        .then(_result => {
+            console.log("BOOKING-DELETED!");
+            
+            res.render('emails/delete-booking', {
+                booking: bookingDetails,
+                customerEmail: req.user.email,
+                customerName: req.user.name 
+            }, (err, emailBody) => {
+                if (err)
+                    console.log(err);
+                else {
+                    bookingEmailOptions.to = req.user.email;
+                    bookingEmailOptions.subject = `Booking Cancellation - #${bookingDetails._id}`;
+                    bookingEmailOptions.html = emailBody;
+                    
+                    mail.sendMail(bookingEmailOptions, (err, _info) => {
+                        if(err)
+                            console.log(err);
+                    });
+                }
+            });
+
+            return res.redirect('/bookings');
+        })
+        .catch(err => console.log(err));
 };

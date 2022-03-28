@@ -16,4 +16,6 @@ router.get('/profile', hotelController.getProfile);
 
 router.post('/profile', hotelController.postProfile);
 
+router.post('/delete-booking', hotelController.postDeleteBooking);
+
 module.exports = router;

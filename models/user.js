@@ -31,13 +31,29 @@ const userSchema = Schema({
 
 userSchema.methods.addBooking = function (booking) {
     const bookings = this.bookingList.bookings;
-    const updatedBookings = [...this.bookingList.bookings, booking]
+    const updatedBookings = [...bookings, booking]
 
     const updatedBookingList = {
         bookings: updatedBookings
     }
 
     this.bookingList = updatedBookingList;
+    return this.save();
+}
+
+userSchema.methods.deleteBooking = function(bookingID){
+    const bookings = this.bookingList.bookings; 
+    const bookingList = [...bookings];
+
+    const updatedBookings = bookingList.filter(bookingInfo => {
+        return bookingInfo._id != bookingID;
+    });
+
+    const updatedBookingList = {
+        bookings: updatedBookings
+    }
+    this.bookingList = updatedBookingList;
+
     return this.save();
 }
 

@@ -502,6 +502,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .flex{
     display: flex;
 }
+.table{
+    display: table;
+}
 .grid{
     display: grid;
 }
@@ -636,6 +639,12 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .pl-1{
     padding-left: 0.25rem;
+}
+.pl-2{
+    padding-left: 0.5rem;
+}
+.pr-8{
+    padding-right: 2rem;
 }
 .pl-4{
     padding-left: 1rem;
