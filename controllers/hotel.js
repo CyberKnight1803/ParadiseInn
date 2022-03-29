@@ -71,25 +71,31 @@ exports.postAddBooking = (req, res, next) => {
     const checkOutDate = req.body.checkOutDate;
     const numGuests = req.body.numGuests;
     const numRooms = req.body.numRooms;
+    let totalCost;
+    let bookingDetails;
 
     if (roomType == "" || checkInDate == "" || checkOutDate == "" || numGuests == "")
         return res.redirect('/book');
+    
+    RoomType.findOne({name: roomType})
+    .then(room => {
+        totalCost = Number(numRooms) * Number(room.cost);
+        
+        const booking = new Booking({
+            roomType: roomType, 
+            checkInDate: checkInDate, 
+            checkOutDate: checkOutDate, 
+            numGuests: numGuests, 
+            numRooms: numRooms, 
+            cost: totalCost,
+            userId: req.user._id
+        });
 
-    const booking = new Booking({
-        roomType: roomType, 
-        checkInDate: checkInDate, 
-        checkOutDate: checkOutDate, 
-        numGuests: numGuests, 
-        numRooms: numRooms, 
-        userId: req.user._id
+        return booking.save();
     })
-
-    let bookingDetails;
-
-    return booking.save()
     .then(bookingInfo => {
         bookingDetails = bookingInfo;
-        return req.user.addBooking(booking);
+        return req.user.addBooking(bookingInfo);
     })
     .then(_result => {
         console.log("BOOKING SUCCESS!");

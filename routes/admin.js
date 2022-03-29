@@ -10,6 +10,8 @@ router.get('/add-employee', isAdmin, adminController.getAddEmployee);
 
 router.get('/manage-bookings', isAdmin, adminController.getManageBookings);
 
+router.get('/add-room', isAdmin, adminController.getAddRoom);
+
 router.get('/layouts', isAdmin, adminController.getLayout);
 
 module.exports = router;

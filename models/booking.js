@@ -22,6 +22,10 @@ const bookingSchema = Schema({
         type: Number, 
         required: true
     }, 
+    cost: {
+        type: Number,
+        required: true
+    },
     userId: {
         type: Schema.Types.ObjectId, 
         ref: 'User', 

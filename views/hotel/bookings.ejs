@@ -27,9 +27,11 @@
                         <div class="px-4 py-2">
                             <p class="text-md font-archia"><span class="font-bold">Room type</span> : <%= booking.roomType %></p>
                         </div>
-
                         <div class="px-4 py-2">
                             <p class="text-md font-archia"><span class="font-bold">Total Guests</span> : <%= booking.numGuests %></p>
+                        </div>
+                        <div class="px-4 py-2">
+                            <p class="text-md font-archia"><span class="font-bold">Total Cost</span> : <span class="font-dm_mono">$<%= booking.cost %></span></p>
                         </div>
                     </div>
               <% });%>
